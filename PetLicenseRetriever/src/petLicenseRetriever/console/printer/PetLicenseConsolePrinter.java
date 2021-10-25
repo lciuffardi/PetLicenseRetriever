@@ -7,6 +7,7 @@ import java.util.Scanner;
 import petLicenseRetriever.constants.SearchCriteria;
 import petLicenseRetriever.object.PetDARecord;
 import petLicenseRetriever.object.PetLicense;
+import petLicenseRetriever.object.PetLicenseRetrieverListManager;
 import petLicenseRetriever.resources.multilingual.constants.AnalyticsKey;
 import petLicenseRetriever.resources.multilingual.constants.CommonKey;
 import petLicenseRetriever.resources.multilingual.constants.ErrorsKey;
@@ -25,14 +26,14 @@ public class PetLicenseConsolePrinter{
 	/** displayAllPetLicenseData() - Displays all pet data retrieved from the Seattle Pet License Database
 	 * 
 	 */
-	public static void displayAllPetLicenseData(List<PetLicense> petLicenseList) {
+	public static void displayAllPetLicenseData() {
 		String input;
 		Scanner sc = PetLicenseAppScanner.getInputScanner();
-
-		int pages = petLicenseList.size() / (int) Math.ceil(10);
+		List<PetLicense> petLicenseRetrieverList = PetLicenseRetrieverListManager.getList();
+		int pages = petLicenseRetrieverList.size() / (int) Math.ceil(10);
 		int currPage = 1;
 		int currPet = 0;
-		for(PetLicense petLicense: petLicenseList) {
+		for(PetLicense petLicense: petLicenseRetrieverList) {
 			currPet++;
 			System.out.println(petLicense.toString());
 			if(currPet % 10 == 0) {
@@ -52,10 +53,10 @@ public class PetLicenseConsolePrinter{
 	 * @param input
 	 * @param searchCriteria
 	 */
-	public static void printSearchByResults(List<PetLicense> petLicenseList, String input, SearchCriteria searchCriteria) {
+	public static void printSearchByResults(String input, SearchCriteria searchCriteria) {
 		boolean found = false;
 		boolean print = false;
-		for(PetLicense petLicense: petLicenseList) {
+		for(PetLicense petLicense: PetLicenseRetrieverListManager.getList()) {
 			switch(searchCriteria) {
 				case ISSUE_DATE:
 					int year = Integer.parseInt(input.substring(0,4));

@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import petLicenseRetriever.constants.FilePath;
 import petLicenseRetriever.constants.SearchCriteria;
 import petLicenseRetriever.object.PetLicense;
+import petLicenseRetriever.object.PetLicenseRetrieverListManager;
 import petLicenseRetriever.resources.multilingual.constants.ErrorsKey;
 import petLicenseRetriever.resources.multilingual.constants.InfoKey;
 import petLicenseRetriever.resources.multilingual.constants.MultilingualPropertiesFile;
@@ -29,7 +29,7 @@ public class PetLicenseReport {
 		return petLicenseReport;
 	}
 	
-	public static void exportSearchByResults(List<PetLicense> petLicenseList, String input, SearchCriteria searchCriteria) throws IOException {
+	public static void exportSearchByResults(String input, SearchCriteria searchCriteria) throws IOException {
 		String time = getTime();
 
 		File directory = new File(FilePath.PET_LICENSE_EXPORT_PATH.getFilePath()+ "\\" + time);
@@ -49,10 +49,9 @@ public class PetLicenseReport {
 		FileWriter fw = new FileWriter(file);
 		
 		BufferedWriter bw = new BufferedWriter(fw);
-		
 		boolean found = false;
 		boolean print = false;
-		for(PetLicense petLicense: petLicenseList) {
+		for(PetLicense petLicense: PetLicenseRetrieverListManager.getList()) {
 			switch(searchCriteria) {
 				case ISSUE_DATE:
 					int year = Integer.parseInt(input.substring(0,4));

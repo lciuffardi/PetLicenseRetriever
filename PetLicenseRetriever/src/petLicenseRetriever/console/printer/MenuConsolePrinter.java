@@ -2,7 +2,6 @@ package petLicenseRetriever.console.printer;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.List;
 import java.util.Scanner;
 
 import org.json.simple.parser.ParseException;
@@ -10,7 +9,7 @@ import org.json.simple.parser.ParseException;
 import petLicenseRetriever.analytics.PetLicenseDataAnalytics;
 import petLicenseRetriever.constants.SearchCriteria;
 import petLicenseRetriever.dao.PetLicenseDAO;
-import petLicenseRetriever.object.PetLicense;
+import petLicenseRetriever.object.PetLicenseRetrieverListManager;
 import petLicenseRetriever.report.PetLicenseReport;
 import petLicenseRetriever.resources.multilingual.constants.CommonKey;
 import petLicenseRetriever.resources.multilingual.constants.ErrorsKey;
@@ -33,7 +32,7 @@ public class MenuConsolePrinter {
 	 * @throws IOException 
 	 * @throws MalformedURLException 
 	 */
-	public static void showMenuOptions(List<PetLicense> petLicenseList) throws MalformedURLException, IOException, ParseException {
+	public static void showMenuOptions() throws MalformedURLException, IOException, ParseException {
 		Scanner sc = PetLicenseAppScanner.getInputScanner();
 		boolean exit = false;
 		
@@ -52,19 +51,20 @@ public class MenuConsolePrinter {
 
 			switch(input) {
 				case "1":
-					PetLicenseConsolePrinter.displayAllPetLicenseData(petLicenseList);
+					PetLicenseConsolePrinter.displayAllPetLicenseData();
 					break;
 				case "2":
-					printSearchByOptions(petLicenseList);
+					printSearchByOptions();
 					break;
 				case "3":
-					printExportOptions(petLicenseList);
+					printExportOptions();
 					break;
 				case "4":
-					PetLicenseDataAnalytics.analysisPetLicenseData(petLicenseList);
+					PetLicenseDataAnalytics.analysisPetLicenseData();
 					break;
 				case "9":
-					petLicenseList = PetLicenseDAO.getPetLicenseData();
+					PetLicenseRetrieverListManager.getList().clear();
+					PetLicenseDAO.getPetLicenseData();
 					break;
 				case "0":
 					exit = true;
@@ -79,7 +79,7 @@ public class MenuConsolePrinter {
 	/**	printSearchByOptions()
 	 * 
 	 */
-	public static void printSearchByOptions(List<PetLicense> petLicenseList) {
+	public static void printSearchByOptions() {
 		Scanner sc = PetLicenseAppScanner.getInputScanner();
 
 		System.out.println("1. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.SEARCH_BY_LICENSE_ISSUE_DATE));
@@ -98,7 +98,7 @@ public class MenuConsolePrinter {
 				+ PetLicenseResourceBundle.getMessageFromSearchCriteria(searchCriteria) + ": ");
 		input = sc.nextLine();
 		
-		PetLicenseConsolePrinter.printSearchByResults(petLicenseList, input, searchCriteria);
+		PetLicenseConsolePrinter.printSearchByResults(input, searchCriteria);
 		
 		System.out.println(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.COMMON, CommonKey.PRESS_ENTER_TO_CONTINUE) + "...");
 		sc.nextLine();
@@ -107,7 +107,7 @@ public class MenuConsolePrinter {
 	/**	printSearchByOptions()
 	 * 
 	 */
-	public static void printExportOptions(List<PetLicense> petLicenseList) {
+	public static void printExportOptions() {
 		System.out.println("1. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.EXPORT_BY_LICENSE_ISSUE_DATE));
 		System.out.println("2. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.EXPORT_BY_LICENSE_NUMBER));
 		System.out.println("3. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.EXPORT_BY_NAME));
@@ -130,7 +130,7 @@ public class MenuConsolePrinter {
 			searchCriteria = SearchCriteria.EXPORT_ALL;
 		
 		try {
-			PetLicenseReport.exportSearchByResults(petLicenseList, input, searchCriteria);
+			PetLicenseReport.exportSearchByResults(input, searchCriteria);
 		} catch (IOException e) {
 			System.out.println(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.ERRORS, ErrorsKey.UNABLE_TO_EXPORT_DATA) + "...");
 			e.printStackTrace();

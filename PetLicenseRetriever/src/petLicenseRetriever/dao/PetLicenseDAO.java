@@ -5,7 +5,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
@@ -19,6 +18,7 @@ import petLicenseRetriever.constants.EndpointURL;
 import petLicenseRetriever.constants.JSONFieldName;
 import petLicenseRetriever.constants.URLParameter;
 import petLicenseRetriever.object.PetLicense;
+import petLicenseRetriever.object.PetLicenseRetrieverListManager;
 import petLicenseRetriever.resources.multilingual.constants.InfoKey;
 import petLicenseRetriever.resources.multilingual.constants.MultilingualPropertiesFile;
 import petLicenseRetriever.resources.multilingual.util.PetLicenseResourceBundle;
@@ -34,11 +34,9 @@ public class PetLicenseDAO {
 	/** getPetLicenseData() - Retrieves Pet Data from the Seattle Pet License Database
 	 * 
 	 */
-	public static List<PetLicense> getPetLicenseData() throws MalformedURLException, IOException, ParseException {
-	    List<PetLicense> petLicenseList = new ArrayList<>();
+	public static void getPetLicenseData() throws MalformedURLException, IOException, ParseException {
 		boolean hasData = true;
 		int offset = 0;
-		int count = 0;
 	
 		System.out.print(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.INFO, InfoKey.LOADING_SEATTLE_PET_LICENSE_DATA));
 		while(hasData) {
@@ -66,17 +64,17 @@ public class PetLicenseDAO {
 	        	Object obj = parser.parse(inline);
 	        	JSONArray dataObj = (JSONArray) obj;
 	        	if(dataObj.size() > 0) {
-		        	count = populatePetLicenseList(petLicenseList, count, dataObj);
+		        	populatePetLicenseList(dataObj);
 		        	offset += 1000;
 		        }else
 		        	hasData = false;
 	        }
 		}
+	    List<PetLicense> petLicenseRetrieverList = PetLicenseRetrieverListManager.getList();
+
 		System.out.println();
-		System.out.println(PetLicenseResourceBundle.getFormattedMessage(MultilingualPropertiesFile.INFO, InfoKey.FOUND_LICENSED_PETS_IN_SEATTLE, count)+ "...");
-		System.out.println(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.INFO, InfoKey.LAST_UPDATED_ON) + ": " + petLicenseList.get(petLicenseList.size()-1).getIssueDate().getTime().toString());
-	
-	    return petLicenseList;
+		System.out.println(PetLicenseResourceBundle.getFormattedMessage(MultilingualPropertiesFile.INFO, InfoKey.FOUND_LICENSED_PETS_IN_SEATTLE, petLicenseRetrieverList.size())+ "...");
+		System.out.println(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.INFO, InfoKey.LAST_UPDATED_ON) + ": " + petLicenseRetrieverList.get(petLicenseRetrieverList.size()-1).getIssueDate().getTime().toString());
 	}
 	
 	/** getResponseCode()
@@ -98,23 +96,19 @@ public class PetLicenseDAO {
 	
 	/** populatePetLicenseList()
 	 * 
-	 * @param petLicenseList
-	 * @param count
 	 * @param dataObj
 	 * @return
 	 */
-	private static int populatePetLicenseList(List<PetLicense> petLicenseList, int count, JSONArray dataObj) {
+	private static void populatePetLicenseList(JSONArray dataObj) {
 		for(int i = 0; i < dataObj.size(); i++) {
-			count++;
 
 			JSONObject jsonObj = (JSONObject) dataObj.get(i);
 			
 			PetLicense petLicense = createPetLicense(jsonObj);
 		    
 			if(!petLicense.isEmpty())
-				petLicenseList.add(petLicense);
+				PetLicenseRetrieverListManager.getList().add(petLicense);
 			}
-		return count;
 	}
 
 	/** createLicensePet()

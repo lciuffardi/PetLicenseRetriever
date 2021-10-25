@@ -9,20 +9,20 @@ import java.util.Map;
 import petLicenseRetriever.console.printer.PetLicenseConsolePrinter;
 import petLicenseRetriever.object.PetDARecord;
 import petLicenseRetriever.object.PetLicense;
+import petLicenseRetriever.object.PetLicenseRetrieverListManager;
 import petLicenseRetriever.object.PetLicensedInYearDARecord;
 
 public class PetLicenseDataAnalytics {
 
 	private PetLicenseDataAnalytics() {}
 	
-	public static void analysisPetLicenseData(List<PetLicense> petLicenseList) {
-		
+	public static void analysisPetLicenseData() {
 		Map<String,PetDARecord> petNameDARecordMap = new HashMap<>();
 		Map<String, PetDARecord> petSpeciesDARecordMap = new HashMap<>();
 		Map<String, PetLicensedInYearDARecord> petLicensedinYearDARecordMap = new HashMap<>();
 		Map<String, PetDARecord> petsInZipCodeDARecordMap = new HashMap<>();
 		
-		for(PetLicense petLicense: petLicenseList) {
+		for(PetLicense petLicense: PetLicenseRetrieverListManager.getList()) {
 			String name = petLicense.getName().toLowerCase();
 			String species = petLicense.getSpecies().toLowerCase();
 			String year = Integer.toString(petLicense.getIssueDate().get(Calendar.YEAR));
