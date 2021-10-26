@@ -5,38 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1856880b-6a9a-4d4f-8ef6-c38f7517de3a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/analytics/PetLicenseDataAnalytics.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/console/printer/AppInfoConsolePrinter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/console/printer/MenuConsolePrinter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/console/printer/PetLicenseConsolePrinter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/constants/EndpointURL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/constants/FilePath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/constants/JSONFieldName.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/constants/SearchCriteria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/constants/URLParameter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/dao/PetLicenseDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/main/PetLicenseRetriever.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/object/PetDARecord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/object/PetLicense.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/object/PetLicenseRetrieverListManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/object/PetLicensedInYearDARecord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/report/PetLicenseReport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/app/constants/AppKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/app/constants/AppPropKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/app/constants/AppPropertiesFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/multilingual/constants/AnalyticsKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/multilingual/constants/CommonKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/multilingual/constants/ErrorsKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/multilingual/constants/InfoKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/multilingual/constants/MenuKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/multilingual/constants/MultilingualKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/multilingual/constants/MultilingualPropertiesFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/multilingual/constants/PetLicenseKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/resources/multilingual/util/PetLicenseResourceBundle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/bin/petLicenseRetriever/scanner/PetLicenseAppScanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

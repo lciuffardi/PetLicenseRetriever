@@ -1,5 +1,6 @@
 /PetLicenseRetriever/.gradle/
 /PetLicenseRetriever/build/
 /PetLicenseRetriever/gradle/
+/.idea/
 /PetLicenseRetriever/gradlew
 /PetLicenseRetriever/gradlew.bat
