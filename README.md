@@ -20,3 +20,5 @@ Initial Commit
 
 # Potential Updates
 * Utilize public Pet License APIs from different cities
+* Export to multiple file types
+* Implement application controls
