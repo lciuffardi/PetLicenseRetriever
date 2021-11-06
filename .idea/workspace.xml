@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1856880b-6a9a-4d4f-8ef6-c38f7517de3a" name="Default Changelist" comment="Ability to choose .txt or .xlsx file types when exporting data">
-      <change afterPath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/constants/FileType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="1856880b-6a9a-4d4f-8ef6-c38f7517de3a" name="Default Changelist" comment="Add Logger/Fix translation error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Menu.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Menu.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Menu_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Menu_es.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Menu_fr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Menu_fr.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/PetLicense.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/PetLicense.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/PetLicense_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/PetLicense_es.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/PetLicense_fr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/PetLicense_fr.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/console/printer/MenuConsolePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/console/printer/MenuConsolePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Info.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Info.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Info_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Info_es.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Info_fr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/resources/multilingual/Info_fr.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/report/PetLicenseReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/report/PetLicenseReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/resources/multilingual/constants/MenuKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/resources/multilingual/constants/MenuKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/resources/multilingual/util/PetLicenseResourceBundle.java" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/resources/multilingual/util/PetLicenseResourceBundle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/resources/multilingual/constants/InfoKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/PetLicenseRetriever/src/petLicenseRetriever/resources/multilingual/constants/InfoKey.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,6 +217,14 @@
       <option name="presentableId" value="Default" />
       <updated>1635276993432</updated>
     </task>
+    <task id="LOCAL-00001" summary="Ability to choose .txt or .xlsx file types when exporting data">
+      <created>1636186439789</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1636186439789</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,7 +242,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Ability to choose .txt or .xlsx file types when exporting data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ability to choose .txt or .xlsx file types when exporting data" />
+    <MESSAGE value="Add Logger/Fix translation error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Logger/Fix translation error" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PetLicenseRetriever$C__Users_LostS_git_PetLicenseRetriever_PetLicenseRetriever_build_gradle.ic" NAME="$PROJECT_DIR$/PetLicenseRetriever/build.gradle Coverage Results" MODIFIED="1635275200609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

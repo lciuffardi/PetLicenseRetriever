@@ -5,6 +5,7 @@ public enum InfoKey implements MultilingualKey {
 	AUTHOR("AUTHOR"),
 	DATA_PROVIDED_BY_THE_CITY_OF_SEATTLE("DATA_PROVIDED_BY_THE_CITY_OF_SEATTLE"),
 	EXPORT_COMPLETE("EXPORT_COMPLETE"),
+	EXPORTING_TO("EXPORTING_TO"),
 	FOUND_LICENSED_PETS_IN_SEATTLE("FOUND_LICENSED_PETS_IN_SEATTLE"),
 	GITHUB("GITHUB"),
 	LAST_UPDATED_ON("LAST_UPDATED_ON"),
@@ -21,5 +22,5 @@ public enum InfoKey implements MultilingualKey {
 
 	public String getFldVal() {
 		return fldVal;
-	};
+	}
 }

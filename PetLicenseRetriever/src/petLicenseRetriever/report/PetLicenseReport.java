@@ -4,6 +4,8 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -21,9 +23,8 @@ import petLicenseRetriever.resources.multilingual.constants.PetLicenseKey;
 import petLicenseRetriever.resources.multilingual.util.PetLicenseResourceBundle;
 
 public class PetLicenseReport {
-	
-	private static PetLicenseReport petLicenseReport;
-	
+	private static final Logger logger = Logger.getLogger(PetLicenseReport.class.getName());
+
 	private PetLicenseReport() {}
 	
 	public static void exportSearchByResults(String input, SearchCriteria searchCriteria, FileType selectedFileType) throws IOException {
@@ -37,12 +38,14 @@ public class PetLicenseReport {
 		else
 			file = new File(directory.getAbsolutePath() + "\\" + "SEARCH_BY_" + searchCriteria.getFldVal() + "_" + input.toUpperCase() + selectedFileType.getFileType());
 		
-		if(!directory.exists())
-			directory.mkdirs();
-		if(!file.exists())
-			file.createNewFile();
+		if(directory.mkdirs()){
+			logger.log(Level.INFO, "Successfully created directory.");
+		}
+		if(file.createNewFile()){
+			logger.log(Level.INFO, "Successfully created file.");
+		}
 		
-		System.out.println("Exporting to " + file.getAbsolutePath());
+		System.out.println(PetLicenseResourceBundle.getFormattedMessage(MultilingualPropertiesFile.INFO, InfoKey.EXPORTING_TO, file.getAbsolutePath()));
 		boolean found = false;
 
 		switch(selectedFileType) {
