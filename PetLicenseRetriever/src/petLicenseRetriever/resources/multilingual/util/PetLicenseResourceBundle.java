@@ -17,7 +17,7 @@ public class PetLicenseResourceBundle {
     		
     private static Locale currentLocale;
 
-    private PetLicenseResourceBundle() {};
+    private PetLicenseResourceBundle() {}
     
     public static String getMessage(MultilingualPropertiesFile propertiesFile, MultilingualKey key) {
 		if(currentLocale == null) 
@@ -52,7 +52,7 @@ public class PetLicenseResourceBundle {
 	    		message = getMessage(MultilingualPropertiesFile.PET_LICENSE, PetLicenseKey.ISSUE_DATE);
 		    	break;
 			case EXPORT_ALL:
-	    		message = getMessage(MultilingualPropertiesFile.PET_LICENSE, MenuKey.EXPORT_ALL);
+	    		message = getMessage(MultilingualPropertiesFile.MENU, MenuKey.EXPORT_ALL);
 				break;
 			case LICENSE_NUMBER:
 	    		message = getMessage(MultilingualPropertiesFile.PET_LICENSE, PetLicenseKey.LICENSE_NUMBER);

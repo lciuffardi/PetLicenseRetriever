@@ -7,6 +7,7 @@ import java.util.Scanner;
 import org.json.simple.parser.ParseException;
 
 import petLicenseRetriever.analytics.PetLicenseDataAnalytics;
+import petLicenseRetriever.constants.FileType;
 import petLicenseRetriever.constants.SearchCriteria;
 import petLicenseRetriever.dao.PetLicenseDAO;
 import petLicenseRetriever.object.PetLicenseRetrieverListManager;
@@ -26,8 +27,7 @@ public class MenuConsolePrinter {
 	private MenuConsolePrinter() {}
 	
 	/** showMenuOptions()
-	 * 
-	 * @param petLicenseList
+	 *
 	 * @throws ParseException 
 	 * @throws IOException 
 	 * @throws MalformedURLException 
@@ -54,10 +54,10 @@ public class MenuConsolePrinter {
 					PetLicenseConsolePrinter.displayAllPetLicenseData();
 					break;
 				case "2":
-					printSearchByOptions();
+					showSearchByOptions();
 					break;
 				case "3":
-					printExportOptions();
+					showExportOptions();
 					break;
 				case "4":
 					PetLicenseDataAnalytics.analysisPetLicenseData();
@@ -76,10 +76,10 @@ public class MenuConsolePrinter {
 		sc.close();
 	}
 	
-	/**	printSearchByOptions()
+	/**	showSearchByOptions()
 	 * 
 	 */
-	public static void printSearchByOptions() {
+	public static void showSearchByOptions() {
 		Scanner sc = PetLicenseAppScanner.getInputScanner();
 
 		System.out.println("1. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.SEARCH_BY_LICENSE_ISSUE_DATE));
@@ -104,10 +104,10 @@ public class MenuConsolePrinter {
 		sc.nextLine();
 	}
 	
-	/**	printSearchByOptions()
+	/**	showExportOptions()
 	 * 
 	 */
-	public static void printExportOptions() {
+	public static void showExportOptions() {
 		System.out.println("1. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.EXPORT_BY_LICENSE_ISSUE_DATE));
 		System.out.println("2. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.EXPORT_BY_LICENSE_NUMBER));
 		System.out.println("3. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.EXPORT_BY_NAME));
@@ -122,15 +122,17 @@ public class MenuConsolePrinter {
 		
 		SearchCriteria searchCriteria;
 
-		if(!input.matches("0")) {
-			searchCriteria = getSearchCriteria(input);
+		searchCriteria = getSearchCriteria(input);
+
+		if(!SearchCriteria.EXPORT_ALL.equals(searchCriteria)) {
 			System.out.print(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.PLEASE_ENTER_FOLLOWING_SEARCH_CRITERIA) + " - " + PetLicenseResourceBundle.getMessageFromSearchCriteria(searchCriteria) + ": ");
 			input = sc.nextLine();
-		}else
-			searchCriteria = SearchCriteria.EXPORT_ALL;
-		
+		}
+
+		FileType selectedFileType = showFileTypeOptions();
+
 		try {
-			PetLicenseReport.exportSearchByResults(input, searchCriteria);
+			PetLicenseReport.exportSearchByResults(input, searchCriteria, selectedFileType);
 		} catch (IOException e) {
 			System.out.println(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.ERRORS, ErrorsKey.UNABLE_TO_EXPORT_DATA) + "...");
 			e.printStackTrace();
@@ -139,7 +141,34 @@ public class MenuConsolePrinter {
 		System.out.println(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.COMMON, CommonKey.PRESS_ENTER_TO_CONTINUE) + "...");
 		sc.nextLine();
 	}
-	
+
+	/** showFileTypeOptions()
+	 *
+	 * @return
+	 */
+	private static FileType showFileTypeOptions() {
+		FileType fileType = null;
+		System.out.println(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.PLEASE_SELECT_FILE_TYPE_TO_EXPORT_DATA));
+		System.out.println("1. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.TXT));
+		System.out.println("2. " + PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.MENU, MenuKey.XLSX));
+
+		Scanner sc = PetLicenseAppScanner.getInputScanner();
+		String input = sc.nextLine();
+
+		switch(input){
+			case "1":
+				fileType = FileType.TXT;
+				break;
+			case "2":
+				fileType = FileType.XLSX;
+				break;
+			default:
+				break;
+		}
+
+		return fileType;
+	}
+
 	/** getSearchCriteria() - Returns search criteria based on user input.
 	 * 
 	 * @param input
@@ -148,29 +177,33 @@ public class MenuConsolePrinter {
 	public static SearchCriteria getSearchCriteria(String input) {
 		SearchCriteria searchCriteria = null;
 		switch(input) {
-		case "1":
-			System.out.println(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.COMMON, CommonKey.DATE_FORMAT_YYYY_MM_DD));
-			searchCriteria = SearchCriteria.ISSUE_DATE;
-			break;
-		case "2":
-			searchCriteria = SearchCriteria.LICENSE_NUMBER;
-			break;
-		case "3":
-			searchCriteria = SearchCriteria.NAME;
-			break;
-		case "4":
-			searchCriteria = SearchCriteria.SPECIES;
-			break;
-		case "5":
-			searchCriteria = SearchCriteria.PRIMARY_BREED;
-			break;
-		case "6":
-			searchCriteria = SearchCriteria.SECONDARY_BREED;
-			break;
-		case "7":
-			searchCriteria = SearchCriteria.ZIP_CODE;
-		default:
-			break;
+			case "1":
+				System.out.println(PetLicenseResourceBundle.getMessage(MultilingualPropertiesFile.COMMON, CommonKey.DATE_FORMAT_YYYY_MM_DD));
+				searchCriteria = SearchCriteria.ISSUE_DATE;
+				break;
+			case "2":
+				searchCriteria = SearchCriteria.LICENSE_NUMBER;
+				break;
+			case "3":
+				searchCriteria = SearchCriteria.NAME;
+				break;
+			case "4":
+				searchCriteria = SearchCriteria.SPECIES;
+				break;
+			case "5":
+				searchCriteria = SearchCriteria.PRIMARY_BREED;
+				break;
+			case "6":
+				searchCriteria = SearchCriteria.SECONDARY_BREED;
+				break;
+			case "7":
+				searchCriteria = SearchCriteria.ZIP_CODE;
+				break;
+			case "0":
+				searchCriteria = SearchCriteria.EXPORT_ALL;
+				break;
+			default:
+				break;
 		}
 		return searchCriteria;
 	}
